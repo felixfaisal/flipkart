@@ -19,8 +19,9 @@ f = open(filename, "w")
 #setting headers for our spreadsheet
 headers = "Laptop, Price \n"
 f.write(headers)
+length = len(containers) - 1
 #for loop to extract data from all items from the list containers
-for i in range(2,20):
+for i in range(2,length):
 	container = containers[i]
 	title = container.findAll("div",{"class":"_3wU53n"})
 	title_name = title[0].text
