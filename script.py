@@ -1,5 +1,9 @@
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
+import datetime
+#capturing time when the program is going to be executed
+currentDT = datetime.datetime.now()
+time = str(currentDT)
 #placing the target url in a variable
 my_url = 'https://www.flipkart.com/search?q=laptops&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.price_range.from%3DMin&p%5B%5D=facets.price_range.to%3D70000&p%5B%5D=facets.serviceability%5B%5D%3Dtrue&p%5B%5D=facets.processor%255B%255D%3DCore%2Bi7'
 #using urlopen function as uReq
@@ -18,8 +22,11 @@ filename="laptops.csv"
 f = open(filename, "w")
 #setting headers for our spreadsheet
 headers = "Laptop, Price \n"
+clock = "Performed scraping at " + time + "\n"
+f.write(clock)
 f.write(headers)
 length = len(containers) - 1
+print("Performing scraping at " + time + "\n")
 #for loop to extract data from all items from the list containers
 for i in range(2,length):
 	container = containers[i]
